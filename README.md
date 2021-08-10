@@ -5,7 +5,7 @@ Installation:
 
 * cd mail_generator/
 * Use the command to install dependencies "pip3 install -r requirements.txt".
-* python3 setup.py install
+* python3 setup.py install (for console use) or python3 mail_generator.py
 ---------
 
 Help Text
@@ -15,7 +15,7 @@ Usage:
 * Choose your own patterns file or use default (type Enter):
 /home/user/Documents/myownpatterns.txt
 * Specify the path to save the result
-*** Done! ***
+* Done! *
 
 ---------
 
