@@ -7,10 +7,9 @@ Installation:
 * cd mail_generator/
 * Use the command to install dependencies "pip3 install -r requirements.txt".
 * python3 setup.py install (for console use)
+
 ---------
 
-Help Text
----------
 Usage:
 * Type in console: mail_generator or "cd mail_generator/ && python3 mail_generator.py"
 * Choose your own patterns file or use default (type Enter):
