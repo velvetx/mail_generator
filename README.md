@@ -16,7 +16,6 @@ Usage:
 * Choose your own patterns file or use default (type Enter):
 /home/user/Documents/myownpatterns.txt
 * Specify the path to save the result
-* Done! *
 
 ---------
 
