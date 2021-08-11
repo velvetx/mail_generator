@@ -30,6 +30,6 @@ setup(
         'console_scripts': ['mail_generator = mail_generator.mail_generator:Program']
     },
     package_data={
-        "mail_generator": ["*", "src/*", "logs/*"]
+        "mail_generator": ["*", "src/*", "logs/*", "data/*"]
     },
 )

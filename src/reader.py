@@ -29,7 +29,7 @@ class Reader:
                 print(f'{colorama.Fore.RED}Bad path!"')
                 self.get_input_file()
         else:
-            with open('patterns.txt', 'r') as reader:
+            with open('data/patterns.txt', 'r') as reader:
                 for pattern in reader:
                     self.patterns.append(pattern.strip())
 
