@@ -29,8 +29,9 @@ class Program:
             sys.exit(0)
 
     @staticmethod
-    def get_logo():
+    def greeting():
         logo.Logo.printing_logo()
+        print(f'{colorama.Fore.GREEN}Processing...')
 
     def get_user_input(self):
         self.amount_of_data, self.amount_of_letters, self.recipients_email_address = \
@@ -49,13 +50,15 @@ class Program:
         self.patterns = reader.Reader().execution(self.list_with_data, self.amount_of_letters)
 
     def get_result_list(self):
+        print(f'\n{colorama.Fore.GREEN}Found {len(self.list_with_data)} records!\n'
+              f'Generating result file with {self.amount_of_letters} records.')
         self.result = substitution.Substitution().execution(self.patterns, self.list_with_data, self.amount_of_letters)
 
     def get_result(self):
         writer.Writer().execution(self.recipients_email_address, self.result)
 
     def execution(self):
-        self.get_logo()
+        self.greeting()
         self.get_user_input()
         self.get_parsed_data()
         self.get_file_with_data()

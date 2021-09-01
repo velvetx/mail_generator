@@ -1,4 +1,5 @@
 import colorama
+import os
 
 
 class Reader:
@@ -12,26 +13,24 @@ class Reader:
         try:
             self.selected_file = input('\nSelect a file with patterns (learn about it in readme.txt), '
                                        'default="patterns.txt": ')
-        except Exception as error:
-            print(error)
-            self.get_input_file()
+            if not os.path.exists(self.selected_file):
+                raise FileNotFoundError
+            if self.selected_file[-1] == '/':
+                self.selected_file = self.selected_file[:-1]
+            if os.path.splitext(self.selected_file)[1] != '.txt':
+                raise FileNotFoundError
+        except FileNotFoundError:
+            answer = input('Want to use default patterns? (Yes/No) ')
+            if answer.lower().strip() == 'no':
+                print(f'{colorama.Fore.GREEN}Use the correct path!')
+                self.get_input_file()
+            else:
+                self.selected_file = 'data/patterns.txt'
 
     def get_file_with_patterns(self):
-        if self.selected_file:
-            try:
-                with open(f'{self.selected_file}', 'r') as reader:
-                    for pattern in reader:
-                        self.patterns.append(pattern.strip())
-            except FileNotFoundError:
-                print(f'{colorama.Fore.RED}Bad path!')
-                self.get_input_file()
-            except NotADirectoryError:
-                print(f'{colorama.Fore.RED}Bad path!"')
-                self.get_input_file()
-        else:
-            with open('data/patterns.txt', 'r') as reader:
-                for pattern in reader:
-                    self.patterns.append(pattern.strip())
+        with open(f'{self.selected_file}', 'r') as reader:
+            for pattern in reader:
+                self.patterns.append(pattern.strip())
 
     def execution(self, data_for_substitution, amount_of_letters):
         self.data_for_substitution = data_for_substitution

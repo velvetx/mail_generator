@@ -13,7 +13,7 @@ class InputParser:
 
     def get_amount_of_data(self):
         self.amount_of_data = input(f'{colorama.Back.MAGENTA}{colorama.Fore.BLACK}'
-                                    f'Enter the amount of data to parse: {colorama.Back.RESET}'
+                                    f'Enter the amount of data to parse (1-99999): {colorama.Back.RESET}'
                                     f'{colorama.Fore.RESET}')
         if len(self.amount_of_data) == 0:
             print(f"{colorama.Fore.RED}Enter a valid value!")
@@ -33,8 +33,9 @@ class InputParser:
         self.recipients_email_address = input(f'{colorama.Back.MAGENTA}{colorama.Fore.BLACK}'
                                               f'Enter the recipients email addresses separated by a space: '
                                               f'{colorama.Back.RESET}{colorama.Fore.RESET}')
-        if len(self.recipients_email_address) == 0:
-            print(f"{colorama.Fore.RED}Enter a valid value!")
+        if len(self.recipients_email_address) == 0 or self.recipients_email_address.count('@') \
+                < len(self.recipients_email_address.split(' ')):
+            print(f"{colorama.Fore.RED}Enter a valid email!")
             self.get_recipients_email_address()
 
     def execution(self):
